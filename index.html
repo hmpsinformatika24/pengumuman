@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengumuman HMPS INF</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Menghubungkan CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Daftar NIM yang valid dan hasil seleksi per divisi
+        const results = {
+    "241730026": { name: "Mohammad Azkal Azkia", internal: true, eksternal: false, pao: false, minatBakat: false, ekonomiKreatif: false, pemberdayaanPerempuan: false, kominfo: false },
+    "241730018": { name: "Muhfiz Zauzi", internal: false, eksternal: true, pao: false, minatBakat: false, ekonomiKreatif: false, pemberdayaanPerempuan: false, kominfo: false },
+    "241730032": { name: "Naufal Afaf Ekayana", internal: true, eksternal: false, pao: false, minatBakat: false, ekonomiKreatif: false, pemberdayaanPerempuan: false, kominfo: false },
+    "241730077": { name: "Athalla Rizqy Erlangga", internal: false, eksternal: false, pao: true, minatBakat: false, ekonomiKreatif: false, pemberdayaanPerempuan: false, kominfo: false },
+    "241730010": { name: "Muhammad Alief Rasyidin", internal: false, eksternal: true, pao: false, minatBakat: false, ekonomiKreatif: false, pemberdayaanPerempuan: false, kominfo: false },
+    "241730002": { name: "Allyssa Putri", internal: false, eksternal: false, pao: false, minatBakat: false, ekonomiKreatif: false, pemberdayaanPerempuan: false, kominfo: true },
+    "241730014": { name: "Lucy Amanda", internal: false, eksternal: false, pao: false, minatBakat: false, ekonomiKreatif: false, pemberdayaanPerempuan: true, kominfo: false },
+    "241730004": { name: "Raihan Khairul Annas", internal: false, eksternal: false, pao: false, minatBakat: false, ekonomiKreatif: true, pemberdayaanPerempuan: false, kominfo: false },
+    "241730034": { name: "Siti Aminah", internal: false, eksternal: true, pao: false, minatBakat: false, ekonomiKreatif: false, pemberdayaanPerempuan: false, kominfo: false },
+    "241730006": { name: "Derisya Febriyanti", internal: false, eksternal: true, pao: false, minatBakat: false, ekonomiKreatif: false, pemberdayaanPerempuan: false, kominfo: false },
+    "241730040": { name: "Humaida Athifah", internal: false, eksternal: false, pao: false, minatBakat: false, ekonomiKreatif: true, pemberdayaanPerempuan: false, kominfo: false },
+    "241730005": { name: "Putri Dwi Manggali", internal: false, eksternal: true, pao: false, minatBakat: false, ekonomiKreatif: false, pemberdayaanPerempuan: false, kominfo: false },
+    "241730001": { name: "Adila Muqtashida", internal: true, eksternal: false, pao: false, minatBakat: false, ekonomiKreatif: false, pemberdayaanPerempuan: false, kominfo: false },
+    "241730053": { name: "Saemah", internal: true, eksternal: false, pao: false, minatBakat: false, ekonomiKreatif: false, pemberdayaanPerempuan: false, kominfo: false },
+    "241730044": { name: "Sri Asri Napitupulu", internal: false, eksternal: false, pao: false, minatBakat: false, ekonomiKreatif: false, pemberdayaanPerempuan: true, kominfo: false },
+    "241730079": { name: "Mochamad Nurul Ayatullah", internal: false, eksternal: false, pao: false, minatBakat: true, ekonomiKreatif: false, pemberdayaanPerempuan: false, kominfo: false },
+    "241730025": { name: "Ahmad Fahmirifa Fahrurozi", internal: false, eksternal: false, pao: true, minatBakat: false, ekonomiKreatif: false, pemberdayaanPerempuan: false, kominfo: false },
+    "241730094": { name: "Anggit Ramadhan", internal: false, eksternal: false, pao: false, minatBakat: true, ekonomiKreatif: false, pemberdayaanPerempuan: false, kominfo: false },
+    "241730028": { name: "Riska Nurnajmah", internal: false, eksternal: false, pao: false, minatBakat: false, ekonomiKreatif: false, pemberdayaanPerempuan: true, kominfo: false },
+    "241730084": { name: "Muhammad Nasywan Amin", internal: false, eksternal: false, pao: false, minatBakat: true, ekonomiKreatif: false, pemberdayaanPerempuan: false, kominfo: false },
+    "241730035": { name: "Muhamad Arief Rachmatullah", internal: false, eksternal: false, pao: false, minatBakat: false, ekonomiKreatif: false, pemberdayaanPerempuan: false, kominfo: true },
+    "241730092": { name: "Aab Abdullah", internal: false, eksternal: false, pao: false, minatBakat: false, ekonomiKreatif: false, pemberdayaanPerempuan: false, kominfo: true },
+    "241730022": { name: "Safira Azahra", internal: false, eksternal: false, pao: false, minatBakat: false, ekonomiKreatif: false, pemberdayaanPerempuan: false, kominfo: true },
+    "241730090": { name: "Bahrul Ulumudin", internal: false, eksternal: false, pao: true, minatBakat: false, ekonomiKreatif: false, pemberdayaanPerempuan: false, kominfo: false },
+    "241730017": { name: "Nazwa Althafah Athalia", internal: true, eksternal: false, pao: false, minatBakat: false, ekonomiKreatif: false, pemberdayaanPerempuan: false, kominfo: false },
+    "241730067": { name: "Rasyadah Wa Syafiq Annawawi", internal: false, eksternal: false, pao: false, minatBakat: false, ekonomiKreatif: true, pemberdayaanPerempuan: false, kominfo: false },
+    "241730016": { name: "Achmad Maulana", internal: false, eksternal: false, pao: false, minatBakat: false, ekonomiKreatif: true, pemberdayaanPerempuan: false, kominfo: false },
+    "241730075": { name: "Muhammad Fazri Al Jaelani", internal: false, eksternal: false, pao: false, minatBakat: true, ekonomiKreatif: false, pemberdayaanPerempuan: false, kominfo: false }
+}
+
+        function checkNIM() {
+            const nimInput = document.getElementById("nimInput").value;
+            const resultDiv = document.getElementById("result");
+            const detailDiv = document.getElementById("detail");
+
+            // Reset hasil sebelumnya
+            resultDiv.classList.add("hidden");
+            detailDiv.classList.add("hidden");
+
+            if (results[nimInput]) {
+                // Menyusun pesan hasil seleksi
+                const divisiLolos = [];
+                if (results[nimInput].internal) divisiLolos.push("Internal");
+                if (results[nimInput].eksternal) divisiLolos.push("Eksternal");
+                if (results[nimInput].pao) divisiLolos.push("PAO");
+                if (results[nimInput].minatBakat) divisiLolos.push("Minat dan Bakat");
+                if (results[nimInput].ekonomiKreatif) divisiLolos.push("Ekonomi dan Kreatif");
+                if (results[nimInput].pemberdayaanPerempuan) divisiLolos.push("Pemberdayaan Perempuan");
+                if (results[nimInput].kominfo) divisiLolos.push("Kominfo");
+
+               // Menyusun pesan akhir
+if (divisiLolos.length > 0) {
+    const name = results[nimInput].name; // Ambil nama berdasarkan NIM
+    resultDiv.innerText = `Selamat, ${name}! Anda lolos seleksi wawancara sebagai anggota divisi: ${divisiLolos.join(', ')}.`;
+} else {
+    resultDiv.innerText = "Maaf, Anda tidak lolos seleksi wawancara.";
+}
+
+                resultDiv.classList.remove("hidden", "text-red-500");
+                resultDiv.classList.add("text-green-500");
+                detailDiv.classList.add("hidden"); // Sembunyikan detail divisi
+            } else {
+                resultDiv.innerText = "Maaf, Anda tidak lolos seleksi wawancara.";
+                resultDiv.classList.remove("hidden", "text-green-500");
+                resultDiv.classList.add("text-red-500");
+                detailDiv.classList.add("hidden");
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="main-container">
+        <!-- Header -->
+        <div class="header">
+            <img src="kl.png" alt="Logo 1" class="h-12 mr-4">
+            <img src="logo-uin-banten.png" alt="Logo 2" class="h-12 mr-4">
+            <div class="text-white text-center">
+                <p class="text-lg font-semibold">HMPS Informatika UIN SMH Banten 2025</p>
+            </div>
+        </div>
+    
+        <!-- Input NIM -->
+        <div class="mb-4">
+            <label for="nimInput" class="block text-gray-700 font-semibold">Masukkan NIM Anda:</label>
+            <input type="text" id="nimInput" class="border rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Contoh: 241730026">
+        </div>
+    
+        <!-- Check Button -->
+        <button onclick="checkNIM()" class="bg-blue-600 text-white rounded-lg p-2 w-full hover:bg-blue-700 transition duration-200">Cek Hasil Seleksi</button>
+    
+        <!-- Result Display -->
+        <div id="result" class="hidden mt-4 text-lg font-semibold"></div>
+        <div id="detail" class="hidden mt-4"></div>
+    </div>
+</body>
+</html>
